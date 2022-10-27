@@ -26,6 +26,7 @@ export default function NewProduct() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleAddMovie = (e) => {
+    e.preventDefault();
     const newMovie = {
       name: name,
       describe: describe,
@@ -91,7 +92,7 @@ function changeSrc(state){
                   <select onChange={(e)=>{ setGenre(e.target.value)}}  className="select form-control">
                   <option disabled={true}>Select Genre</option>
                  {genres.map((items) => (
-                  <option value={items.name}>{items.name}</option>
+                  <option key={items.name} value={items.name}>{items.name}</option>
                  ))}                   
                   </select>
                  

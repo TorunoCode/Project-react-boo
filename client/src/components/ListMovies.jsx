@@ -14,7 +14,7 @@ const ListMovie = () => {
     setQuantityShow(5);
     setTotalQuantity(datafakeMovie.length - 5);
     const fetchMovies = async () => {
-      const {data} = await axios.get("/api/movies");
+      const {data} = await axios.get("http://localhost:5000/api/movies");
       setMovies(data);
     };
     fetchMovies();

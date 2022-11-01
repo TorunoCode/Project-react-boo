@@ -27,11 +27,11 @@ const Routes = () => {
       </Route>          
       <Route path="/HomeAdmin/newUser" element={<NewUser/>}>
       </Route>  
-      <Route path="/HomeAdmin/products" element={<ProductsList/>}>
+      <Route path="/HomeAdmin/movies" element={<ProductsList/>}>
       </Route>  
-      <Route path="/HomeAdmin/product/:productId" element={<Product/>}>
+      <Route path="/HomeAdmin/movies/:movieId" element={<Product/>}>
       </Route>          
-      <Route path="/HomeAdmin/newProduct" element={<NewProduct/>}>
+      <Route path="/HomeAdmin/newMovie" element={<NewProduct/>}>
       </Route> 
       <Route path="/HomeAdmin/newShowing" element={<NewShowing/>}>
       </Route> 

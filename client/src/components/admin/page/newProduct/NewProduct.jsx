@@ -42,7 +42,7 @@ export default function NewProduct() {
       isActive: isActive,
       price: price,
     };
-    console.log(newMovie);
+    addMovie(newMovie, dispatch,toast, navigate);
 
   };
 
@@ -51,7 +51,7 @@ function changeSrc(state){
 }
   useEffect(() => {
     const fetchGenres = async () => {
-      const {data} = await axios.get("/api/movies/genres");
+      const {data} = await axios.get("http://localhost:5000/api/movies/genres");
       setGenres(data);
     };    
     fetchGenres();

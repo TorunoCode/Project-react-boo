@@ -12,7 +12,7 @@ export const loginUser = async (user, dispatch,toast, navigate) => {
   dispatch(loginStart());
   try {
     const res = await axios.post(
-      "/api/user/login",
+      "http://localhost:5000/api/user/login",
       user
     );
     if(res.data)
@@ -44,7 +44,7 @@ export const registerUser = async (user, dispatch,toast, navigate) => {
   dispatch(registerStart());
   try { 
     const res = await axios.post(
-      "/api/user/signUp",
+      "http://localhost:5000/api/user/signUp",
       user
     ); 
     if(res.data)
@@ -71,7 +71,7 @@ export const registerUser = async (user, dispatch,toast, navigate) => {
 export const deleteUser = async (id, dispatch,toast, navigate) => {
   try { 
     const res = await axios.get(
-      "/api/user/delete/"+id     
+      "http://localhost:5000/api/user/delete/"+id     
     ); 
     console.log(id);
     if(res.data)
@@ -93,14 +93,52 @@ export const deleteUser = async (id, dispatch,toast, navigate) => {
    toast.error(err.response.data.message);
   }
 };
+export const addShowing = async (data, dispatch,toast, navigate) => {
+  try { 
+    const res = await axios.post(
+      "http://localhost:5000/api/movies/showing/add", data
+    ); 
+    console.log(data);
+    if(res.data)
+    {
+    toast.success("Add Showing for movie success!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    }); 
+    registerSuccess(res.data);
+     navigate("/HomeAdmin/newShowing");
+     return res.data;
+  } 
+  } catch (err) {
+   toast.error(err.response.data.message);
+  }
+};
 export const addMovie = async (data, dispatch,toast, navigate) => {
   try { 
-    // const res = await axios.get(
-    //   "/api/movie/add/",data
-    // ); 
+    const res = await axios.post(
+      "http://localhost:5000/api/movies/add", data
+    ); 
     console.log(data);
-     return data;
-   
+    if(res.data)
+    {
+    toast.success("Add Showing for movie success!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    }); 
+    registerSuccess(res.data);
+     navigate("/HomeAdmin/newMovie");
+     return res.data;
+  } 
   } catch (err) {
    toast.error(err.response.data.message);
   }

@@ -13,10 +13,6 @@ export default function UserList() {
   const [data,setData] =useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleDelete = async(id) => {
-    deleteUser(id, dispatch,toast, navigate);
-    await fetchUsers();
-  };
   function convert(str) {
     var date = new Date(str),
       mnth = ("0" + (date.getMonth() + 1)).slice(-2),
@@ -25,10 +21,14 @@ export default function UserList() {
   }
   useEffect(() => {  
     fetchUsers();
-  }, [data]);
+  }, []);
   const fetchUsers = async () => {
-    const {data} = await axios.get("/api/user");
+    const {data} = await axios.get("http://localhost:5000/api/user");
     setData(data);
+  };
+  const handleDelete = async(id) => {
+    await deleteUser(id, dispatch,toast, navigate);
+    await fetchUsers();
   };
     const columns = [
   { field: '_id', headerName: 'ID', width: 60 },

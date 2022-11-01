@@ -13,6 +13,7 @@ import Product from "../components/admin/page/product/Product";
 import NewProduct from "../components/admin/page/newProduct/NewProduct";
 import NewShowing from "../components/admin/page/newShowing/NewShowing";
 const Routes = () => {
+  ////adasdas
   return (
     <Rou>
       <Route path="/" element={<Home />} />
